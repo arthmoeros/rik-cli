@@ -1,0 +1,30 @@
+const express = require('express');
+
+/**
+ * 
+ * @param {express.Router} router 
+ */
+function setupRouterBeforeApi(router) {
+  // Add here any middlewares needed to run before the v1 resources
+  // You can remove the following middleware example
+  router.use((req, res, next) => {
+    console.log('PLACEHOLDER VERSION MIDDLEWARE: v1 middleware executed before api router');
+    next();
+  });
+}
+
+/**
+ * 
+ * @param {express.Router} router 
+ */
+function setupRouterAfterApi(router) {
+  // Add here any middlewares needed to run after the v1 resources
+  // You can remove the following middleware example
+  router.use((req, res, next) => {
+    console.log('PLACEHOLDER VERSION MIDDLEWARE: v1 middleware executed after api router');
+    next();
+  });
+}
+
+module.exports.setupRouterBeforeApi = setupRouterBeforeApi;
+module.exports.setupRouterAfterApi = setupRouterAfterApi;

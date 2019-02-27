@@ -1,0 +1,4 @@
+const ResolvedController = require('./impl/default');
+
+<% if (subresourceOf !== undefined) { %>Controller.subOf = '<%=subresourceOf%>';<% } %>
+module.exports = ResolvedController;

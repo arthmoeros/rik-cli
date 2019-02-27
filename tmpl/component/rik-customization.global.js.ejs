@@ -1,0 +1,55 @@
+const express = require('express');
+
+/**
+ * 
+ * @param {express.Router} router 
+ */
+function setupRouterBeforeApi(router) {
+  // Add here any middlewares needed to run before any resources (global)
+  // You can remove the following middleware example
+  router.use((req, res, next) => {
+    console.log('PLACEHOLDER GLOBAL MIDDLEWARE: Global middleware executed before api router');
+    next();
+  });
+}
+
+/**
+ * 
+ * @param {express.Router} router 
+ */
+function setupRouterAfterApi(router) {
+  // Add here any middlewares needed to run before any resources (global)
+  // You can remove the following middleware example
+  router.use((req, res, next) => {
+    console.log('PLACEHOLDER GLOBAL MIDDLEWARE: Global middleware executed after api router');
+    next();
+  });
+}
+
+function getCustomLogger(){
+  const mylogger = {
+    info: (obj) => {
+      obj.level = 'info';
+      obj.environment = process.env.NODE_ENV;
+      console.log(obj);
+    },
+    warn: (obj) => {
+      obj.level = 'warn';
+      obj.environment = process.env.NODE_ENV;
+      console.log(obj);
+    },
+    error: (obj) => {
+      obj.level = 'error';
+      obj.environment = process.env.NODE_ENV;
+      console.log(obj);
+    }
+  };
+  // Here you can return your own logging implementation for RIK messages
+  // Be sure to read the values in the 'obj' parameter provided by the framework into your own logging
+  // You can remove the above logger example
+  return mylogger;
+}
+
+module.exports.setupRouterBeforeApi = setupRouterBeforeApi;
+module.exports.setupRouterAfterApi = setupRouterAfterApi;
+module.exports.getCustomLogger = getCustomLogger;

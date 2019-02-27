@@ -1,0 +1,57 @@
+class Controller {
+  <% if (param.GET) { %>
+  async get(params, query, header, body) {
+    return {
+      header: {
+        // Your response headers here
+      }
+      body: {
+        // Your response body here
+      }
+    };
+  }
+  <% } %>
+
+  <% if (param.POST) { %>
+  async post(params, query, header, body) {
+    return {
+      header: {
+        // Your response headers here
+      }
+      body: {
+        // Your response body here
+      }
+    };
+  }
+  <% } %>
+
+  <% if (param.PATCH) { %>
+  async patch(params, query, header, body) {
+    return {
+      header: {
+        // Your response headers here
+      }
+      body: {
+        // Your response body here
+      }
+    };
+  }
+  <% } %>
+
+  <% if (param.DELETE) { %>
+  async delete(params, query, header, body) {
+    return {
+      header: {
+        // Your response headers here
+      }
+      body: {
+        // Your response body here
+      }
+    };
+  }
+  <% } %>
+}
+<% if (param.subresourceOf !== undefined) { %>
+Controller.subOf = '<%=param.subresourceOf%>';
+<% } %>
+module.exports = Controller;

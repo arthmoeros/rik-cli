@@ -1,0 +1,9 @@
+# Use JOI-YML schema definition here to validate
+<% if (param.GET && params.isRequest) { %># incoming Query String parameters<% } %>
+<% else if (params.isRequest) { %># incoming Request Body values and structure <% } %>
+<% else { %># outgoing Response Body values and structure <% } %>
+
+# Based on JOI-JSON -> https://github.com/vandium-io/joi-json
+# but has the added feature of referencing another yml with the "object" type:
+# For example: 
+# myObject: 'object:./entity/myObject.yml,required'

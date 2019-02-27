@@ -1,0 +1,22 @@
+{
+  "name": "rik-cli",
+  "version": "0.0.0",
+  "description": "CLI for bootstraping RIK projects and components",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/arthmoeros/rik-cli.git"
+  },
+  "author": "arth",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/arthmoeros/rik-cli/issues"
+  },
+  "homepage": "https://github.com/arthmoeros/rik-cli#readme",
+  "dependencies": {
+    "ejs": "^2.6.1"
+  }
+}
