@@ -1,4 +1,7 @@
+// This Controller pattern allows to load a specific controller implementation
+// by any required parameters, such as environment variables or a specific configuration
 const ResolvedController = require('./impl/default');
+// The resolved Controller will handle all the API calls for the resource
 
 <% if (subresourceOf !== undefined) { %>Controller.subOf = '<%=subresourceOf%>';<% } %>
 module.exports = ResolvedController;

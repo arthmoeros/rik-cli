@@ -1,5 +1,8 @@
-class Controller {
-  <% if (param.GET) { %>
+<% if (isMultiDefault) %>// This is a default Controller Implementation for a Multi Controller pattern<%;%>
+<% else %>// This is a resource Controller, all API calls for the resource will be handled here<%;%>
+<% if (isMultiDefault) %>class DefaultController {<%;%>
+<% else %>class MyController {<%;%>
+  <% if (hasGET) { %>
   async get(params, query, header, body) {
     return {
       header: {
@@ -12,7 +15,7 @@ class Controller {
   }
   <% } %>
 
-  <% if (param.POST) { %>
+  <% if (hasPOST) { %>
   async post(params, query, header, body) {
     return {
       header: {
@@ -25,7 +28,7 @@ class Controller {
   }
   <% } %>
 
-  <% if (param.PATCH) { %>
+  <% if (hasPATCH) { %>
   async patch(params, query, header, body) {
     return {
       header: {
@@ -38,7 +41,7 @@ class Controller {
   }
   <% } %>
 
-  <% if (param.DELETE) { %>
+  <% if (hasDELETE) { %>
   async delete(params, query, header, body) {
     return {
       header: {
@@ -51,7 +54,8 @@ class Controller {
   }
   <% } %>
 }
-<% if (param.subresourceOf !== undefined) { %>
-Controller.subOf = '<%=param.subresourceOf%>';
+<% if (subresourceOf !== undefined) { %>
+Controller.subOf = '<%=subresourceOf%>';
 <% } %>
-module.exports = Controller;
+<% if (isMultiDefault) %>module.exports = DefaultController;<%;%>
+<% else %>module.exports = MyController;<%;%>

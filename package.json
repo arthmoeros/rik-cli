@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/arthmoeros/rik-cli#readme",
   "dependencies": {
-    "ejs": "^2.6.1"
+    "ejs": "^2.6.1",
+    "inquirer": "^6.2.2"
   }
 }
