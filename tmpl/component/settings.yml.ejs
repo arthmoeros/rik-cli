@@ -1,5 +1,13 @@
+<% if(project.apiVersionMode === 'path'){ -%>
 apiVersion:
   mode: path
+<% } else { -%>
+apiVersion:
+  mode: header
+  headerName: accept-version
+  headerDefaultVersion: v1
+  enforceVersionHeader: true
+<% } -%>
 cors:
   allowedHeaders:
     # Add here an string array with the allowed headers

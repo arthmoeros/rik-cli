@@ -1,61 +1,26 @@
-<% if (isMultiDefault) %>// This is a default Controller Implementation for a Multi Controller pattern<%;%>
-<% else %>// This is a resource Controller, all API calls for the resource will be handled here<%;%>
-<% if (isMultiDefault) %>class DefaultController {<%;%>
-<% else %>class MyController {<%;%>
-  <% if (hasGET) { %>
-  async get(params, query, header, body) {
-    return {
-      header: {
-        // Your response headers here
-      }
-      body: {
-        // Your response body here
-      }
-    };
-  }
-  <% } %>
+<% if (resource.type === 'multi-implementation') { -%>
+// This is a default Controller Implementation for a Multi Controller pattern
+class DefaultController {
+<% } else { -%>
+// This is a resource Controller, all API calls for the resource will be handled here
+class MyController {
+<% } -%>
 
-  <% if (hasPOST) { %>
-  async post(params, query, header, body) {
+  <% resource.verbs.forEach((verb) => { %>async <%=verb%>(params, query, header, body) {
     return {
       header: {
         // Your response headers here
-      }
+      },
       body: {
         // Your response body here
       }
     };
   }
-  <% } %>
 
-  <% if (hasPATCH) { %>
-  async patch(params, query, header, body) {
-    return {
-      header: {
-        // Your response headers here
-      }
-      body: {
-        // Your response body here
-      }
-    };
-  }
-  <% } %>
-
-  <% if (hasDELETE) { %>
-  async delete(params, query, header, body) {
-    return {
-      header: {
-        // Your response headers here
-      }
-      body: {
-        // Your response body here
-      }
-    };
-  }
-  <% } %>
+  <% }); %>
 }
-<% if (subresourceOf !== undefined) { %>
-Controller.subOf = '<%=subresourceOf%>';
-<% } %>
-<% if (isMultiDefault) %>module.exports = DefaultController;<%;%>
-<% else %>module.exports = MyController;<%;%>
+<% if (resource.type === 'multi-implementation') { -%>
+module.exports = DefaultController;
+<% } else { -%>
+module.exports = MyController;
+<% } -%>

@@ -1,7 +1,11 @@
 # Use JOI-YML schema definition here to validate
-<% if (isGET && isRequest) { %># incoming Query String parameters<% } %>
-<% else if (isRequest) { %># incoming Request Body values and structure <% } %>
-<% else { %># outgoing Response Body values and structure <% } %>
+<% if (verb === 'get' && isRequest) { -%>
+# incoming Query String parameters
+<% } else if (isRequest) { -%>
+# incoming Request Body values and structure
+<% } else { -%>
+# outgoing Response Body values and structure
+<% } -%>
 
 # Based on JOI-JSON -> https://github.com/vandium-io/joi-json
 # but has the added feature of referencing another yml with the "object" type:
